@@ -210,7 +210,38 @@ if (count-- === 5) {
   console.log("Not Matched");
 }
 
+//  Score logic:
+// Print "Excellent", "Good", "Average", or "Fail" based on range
+
+let marks = 82;
+let grade1 = score > 90 ? "Excellent" : score > 80 ? "Good" : score > 65 ? "Average" : "Fail";
+
+
 /////////////////////// ********** Control Flow  *********
+
+// Build a calculator
+// Using switch + arithmetic operators ( +, -, *, / )
+
+let operator = "+"
+let operand1 = 10;
+let operand2 = 3;
+switch(operator){
+  case "+":
+    result = operand1 + operand2;
+    break;
+  case "-":
+    result = operand1 - operand2;
+    break;
+  case "*":
+    result = operand1 * operand2;
+    break;
+  case "/":
+    result = operand1 / operand2;
+    break;
+  default:
+    console.log("Invalid Operator")
+}
+console.log("Result:", result);
 
 /*   Write a function getGrade(score) that : 
   . Takes a student marks ( 0 to 100 ) 
@@ -265,5 +296,6 @@ switch (weather) {
   default:
     console.log("Wear Warm");
 }
+
 
 /////////////////////// ********** Loops  *********
