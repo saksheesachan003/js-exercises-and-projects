@@ -243,6 +243,16 @@ switch(operator){
 }
 console.log("Result:", result);
 
+
+//// Early Return Pattern 
+function getVal(val){
+  if(val < 25) return "D";
+  else if(val < 50) return "C";
+  else if(val < 75) return "B";
+  else return "A"
+}
+console.log(getVal(76)) // A
+
 /*   Write a function getGrade(score) that : 
   . Takes a student marks ( 0 to 100 ) 
   . Returns the grade based on this logic
