@@ -213,8 +213,13 @@ if (count-- === 5) {
 //  Score logic:
 // Print "Excellent", "Good", "Average", or "Fail" based on range
 
-let marks = 82;
-let grade1 = score > 90 ? "Excellent" : score > 80 ? "Good" : score > 65 ? "Average" : "Fail";
+function gradeChecker(marks) {
+  if(marks > 90 ) return "Excellent";
+  if(marks > 80 ) return "Good";
+  if(marks > 65 ) return "Average";
+  return "Fail";
+}
+console.log(gradeChecker(85))
 
 
 /////////////////////// ********** Control Flow  *********
@@ -307,5 +312,35 @@ switch (weather) {
     console.log("Wear Warm");
 }
 
+// Login message:
+// Show different messages based on combination
+let isLoggedInValue = true;
+let isAdminValue = false;
+let message;
+
+if (isLoggedInValue && isAdminValue) {
+    message = "Logged In with admin";
+} else if (isLoggedInValue) {
+    message = "Logged In user";
+} else if (isAdminValue) {
+    message = "Admin user";
+} else {
+    message = "Not user";
+}
+console.log(message);
+
+
+// Age checker:
+// Return "Kid", "Teen", "Adult", or "Senior"
+const ageChecker = (age) =>
+  age <= 12 ? "Kid" :
+  age <= 19 ? "Teen" :
+  age <= 59 ? "Adult" :
+  "Senior";
+
+console.log(ageChecker(10)); // Kid
+console.log(ageChecker(16)); // Teen
+console.log(ageChecker(30)); // Adult
+console.log(ageChecker(65)); // Senior
 
 /////////////////////// ********** Loops  *********
