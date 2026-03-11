@@ -343,4 +343,145 @@ console.log(ageChecker(16)); // Teen
 console.log(ageChecker(30)); // Adult
 console.log(ageChecker(65)); // Senior
 
-/////////////////////// ********** Loops  *********
+/////////////////////// ********** Loops (Repetation) *********
+
+//// There are two types of loops... ( repetation are going in both)
+    // 1. 1 1 1 1 1 1 1 1  ( without increment) ( print -> 1 1..)
+    // 2. 1 2 3 4 5 6 7 8  ( with increment) ( orint -> 1 2..)
+
+
+
+/// For loop 
+  // kaha se jana hai -> kaha tak jana hai -> kaise jana hai
+  // for(start; end; change)
+
+  // 1 - 5
+  for(let i = 1;  i <=5; i++){
+    console.log(i)  // 1 2 3 4 5
+  }
+
+  
+/// While loop
+  // kaha se jana hai -> kab rukna hai -> kaise jana hai
+// in 4 should stop
+  let i = 1;
+  while ( i < 5) {
+    console.log(i);  // 1 2 3 4
+    i++;
+  }
+
+
+/// do - while loop ( atleast run one time if condition false )
+let j = 12;
+do{
+  console.log(12); // 12
+  i++;
+}
+while ( j < 2)
+
+
+/// Break ( exits from loop)
+for(let i = 1; i < 5; i++){
+  console.log(i);
+  if(i === 3) break; // 1 2 3
+}
+
+/// continue ( skips current iteration)
+for(let i = 1; i < 5; i++){
+  if(i === 3) continue; 
+  console.log(i); // 1 2 4 ( skips -> 3 )
+}
+
+
+// Q1.  Print numbers from 1 to 10 using for loop
+  // for(let i = 1; i < 11; i ++){
+  //   // console.log(i);
+  //   i++;
+  // }
+
+// Q1.  Print numbers from 10 to 1 using while loop
+  // let i = 10;
+  // while(i > 0){
+  //   console.log(i);
+  //   i--;
+  // }
+
+// Q3. print even numbers from 1 to 20 using a for loop
+  // for(let i = 1; i < 20 ; i++){
+  //   if(i % 2 === 0) console.log(i);
+  // }
+
+// Q4. Print odd numbers from 1 to 15 using while loop
+  // let i = 1;
+  // while( i <= 15){
+  //   if(i % 2 === 1) console.log(i);
+  //   i++;
+  // }
+
+// Q5. Print the multiplication table of 5 ( i.e. 5 * 1 = 5, 5 * 2 = 10)
+  for(let i = 1; i < 10; i ++){
+    // console.log( 5 * i);
+    console.log(`5 * ${i} = ${5 * i}`)
+    i++;
+  }
+
+// Q6. find the sum of numbers from 1 to 100 using a loop 
+  let sum = 0;
+  for(let i = 1; i < 101; i++){
+    sum = sum + i;
+  }
+  console.log("SUM:", sum);
+
+// Q7. Print all numbers between 1 to 50 that are divisible by 3.
+  // for(let i = 1; i <= 50; i++){
+  //   if(i % 3 === 0) console.log(i);
+  // }
+
+// Q8. ask the user for a number and print wheteher each number from 1 to that number is even or odd
+// e.g. "1 is odd" , "2 is even" ....
+  // let val = prompt("Give a number");
+  // for(let i = 1; i <= val; i++){
+  //   if(i % 2 === 0) console.log(`${i} is even`);
+  //   else console.log(`${i} is odd`);
+  // }
+
+// Q9. count how many numbers between 1 to 100 are divisible by both 3 and 5
+  // for(let i = 1; i <= 100; i++){
+  //   if(i % 3 === 0 && i % 5 === 0) console.log(i);
+  // }
+
+// Q1. Stop at first multiple of 7
+// write a loop from 1 to 100 that:
+//   ->  prints each Number
+//   ->  stops completly when it finds the first number divisible by 7
+
+    for(let i = 1; i <= 100; i++){
+      // console.log(i);
+      if(i % 7 === 0) break; // 1 to 7 and then stop
+    }
+
+// Q2. Skip multiplies of 3
+// Write a loop from 1 to 20 that:
+//    -> skips numbers divisible by 3
+//    -> print all others
+// Expected Output : 1 2 4 5 7..toExponential.apply. (no 3, 6..)
+
+for(let i = 1; i < 21; i++){
+  if(i % 3 === 0) continue;
+  // console.log(i);
+}
+
+// Q3. Print first 5 Odd Numbers only
+// Write a loop from 1 to 100
+//      -> prints only 5 odd numbers
+//      -> then stops the loop
+// Use both if, continue, and a counter + break
+// Expected output : 1 3 5 7 9
+let counter = 0;
+for(let i = 1; i < 101; i++){
+  if(i % 2 === 1){
+    counter++;
+    console.log(i);
+  }
+  if(counter === 5) break;
+}
