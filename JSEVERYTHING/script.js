@@ -1,4 +1,4 @@
-//////////////////////// ********** Variables and Declarations  *********
+//////////////////////// ********** Variables and Declarations  ********* //////////////////////////////////////
 
 var a; // declarations
 var a = 12; // initalization
@@ -87,7 +87,7 @@ const person = { name: "Harsh" };
 person.name = "akshat"; // allowed
 // person = {}; // not allowed, bcs in const we can't re assign new value
 
-/////////////////////// ********** Data Types + Type System  *********
+/////////////////////// ********** Data Types + Type System  ********* ////////////////////////////////////////////
 
 // Symbol  -> unique immutable value (value can't change, override)
 
@@ -137,7 +137,7 @@ console.log(`Obj1: ${a2.name} Obj2: ${b2.name}`); // in both name will change
 // Undefinied Vs null
 // "5" + 1 Vs "5" - 1
 
-/////////////////////// ********** Operators  *********
+/////////////////////// ********** Operators  ********* /////////////////////////////////////
 
 let x3 = 10;
 let y3 = 20;
@@ -222,7 +222,7 @@ function gradeChecker(marks) {
 console.log(gradeChecker(85))
 
 
-/////////////////////// ********** Control Flow  *********
+/////////////////////// ********** Control Flow  ********* ///////////////////////////////////
 
 // Build a calculator
 // Using switch + arithmetic operators ( +, -, *, / )
@@ -343,7 +343,7 @@ console.log(ageChecker(16)); // Teen
 console.log(ageChecker(30)); // Adult
 console.log(ageChecker(65)); // Senior
 
-/////////////////////// ********** Loops (Repetation) *********
+/////////////////////// ********** Loops (Repetation) ********* /////////////////////////////////
 
 //// There are two types of loops... ( repetation are going in both)
     // 1. 1 1 1 1 1 1 1 1  ( without increment) ( print -> 1 1..)
@@ -485,3 +485,164 @@ for(let i = 1; i < 101; i++){
   }
   if(counter === 5) break;
 }
+
+//  Sum of even numbers from 1 to 20
+let sum1 = 0;
+for ( let i = 1; i <= 20; i++){
+  if(i % 2 === 0) sum1 = sum1 + i;
+}
+console.log("Sum of even numbers from 1 to 20:", sum1);
+
+// Directly jump by 2 and add to sum
+// for (let i = 2; i <=20; i = i +2){
+//   sum1 = sum1 + i;
+// }
+
+
+// Square pattern using *
+// Expected output:    *****
+//                     *****
+//                     *****
+//                     *****
+//                     *****
+  // What happens here
+  //           Outer loop runs 5 times → 5 rows
+  //           Each time the inner loop creates:   *****
+for ( let i = 1; i <= 5; i++){
+  let row = "";
+  for(let j = 1; j <= 5; j++){
+    row = row + "*";
+  }
+  console.log(row);
+}
+
+
+// Triangle pattern
+// Expected output:    *
+//                     **
+//                     ***
+//                     ****
+//                     *****
+for(let i = 1; i <= 5; i++){
+  let row = "";
+  for ( let j = 1; j <= i; j++){
+    row = row + "*";
+  }
+  console.log(row);
+}
+
+// Guess number game, use while to ask until correct
+    // let secretNumber = 7;
+    // let guess = Number(prompt("Guess the number between 1 and 10"));
+
+    // while (guess !== secretNumber) {
+
+    //   if (guess > secretNumber) {
+    //     guess = Number(prompt("Too high! Try again:"));
+    //   } else {
+    //     guess = Number(prompt("Too low! Try again:"));
+    //   }
+
+    // }
+    // console.log("Correct! You guessed the number.");
+
+
+/////////////////////// ********** Functions ********* ///////////////////////////////////
+
+/// parameters -> placeholders, arguments -> actual value
+function add(v1, v2) {
+  // console.log(v1, v2);  // undefined undefined, bcs we didn't pass any value
+  // console.log(v1 + v2); // NaN, bcs we can't add undefined value
+}
+add();
+
+// Default Parameters
+function add(v1 = 0, v2 = 0) {
+  // console.log(v1, v2); // 0 0, bcs we set default value 0 for both parameters
+}
+add(); 
+
+// Rest Parameters Vs Spread Operator 
+function num(...numbers) {
+  console.log(numbers); // [1, 2, 3, 4, 5], bcs rest parameter takes all arguments in an array
+}
+let arr = [1, 2, 3, 4, 5]; 
+num(...arr); // rest parameter takes all arguments in an array, we can also spread the array into individual arguments
+
+// return and early return
+function isEven(num) {
+  if (num % 2 === 0) return true; // early return, if condition is true then return true and exit the function
+  return false; // if condition is false then return false
+}
+console.log(isEven(3)); // false
+console.log(isEven(4)); // true
+
+
+/// First class functions ( functions are treated as first class citizens, we can pass function as an argument, return function from another function, and assign function to a variable)
+function abcd(val){
+  val(); // here we are calling the function passed as an argument
+}
+abcd(function () {
+  console.log("Hello"); // Hello , this is a callback function, we are passing this function as an argument to another function
+})
+
+// High - Order functions ( functions that take another function as an argument or return a function)
+function highOrder(){
+  return function(){
+    console.log("I am a high order function"); // I am a high order function, this is a function returned from another function
+  }
+}
+highOrder()(); // we are calling the high order function and then calling the returned function
+
+/// Pure vs Impure functions
+
+// Pure function -> always returns the same output for the same input, and has no side effects ( doesn't modify any external variable or state)
+function pureFunction(a, b) {
+  return a + b; // this is a pure function, it always returns the same output for the same input, and has no side effects
+}
+
+// Impure function -> may return different output for the same input, and may have side effects ( modifies external variable or state)
+let count1 = 0;
+function impureFunction() {
+  count1++; // this is an impure function, it modifies the external variable count1, and may return different output for the same input
+}
+impureFunction();
+console.log(count1); // 1, if we call impureFunction again then count1 will be 2, this is a side effect of impure function
+
+// Closure -> a function that has access to the outer function's variables and parameters, even after the outer function has returned
+function outer() {
+  let count = 0; // this variable is in the outer function's scope
+  return function inner() {
+    count++; // this inner function has access to the outer function's variable count, even after the outer function has returned
+    console.log(count); // this will print the updated count value every time we call the inner function
+  }
+}
+let closureFunction = outer(); // here we are calling the outer function and storing the returned inner function in a variable
+closureFunction(); // 1, this is the first call to the closure function, it will print 1
+
+// Lexical Scope -> a function that has access to the variables and parameters of its outer function, even after the outer function has returned
+function outer1() {
+  let name = "Harsh"; // this variable is in the outer function's scope
+  function inner1() {
+    console.log(name); // this inner function has access to the outer function's variable name, even after the outer function has returned
+  }
+  return inner1;
+}
+let lexicalScopeFunction = outer1(); // here we are calling the outer function and storing the returned inner function in a variable
+lexicalScopeFunction(); // Harsh, this is the first call to the lexical scope function, it will print Harsh
+
+// IIFE ( Immediately Invoked Function Expression) -> a function that is defined and immediately invoked, it is used to create a new scope and avoid polluting the global scope
+(function () {
+  console.log("I am an IIFE"); // I am an IIFE, this function is defined and immediately invoked
+})(); // we are invoking the function immediately after defining it
+
+// Hoisting : Declarations Vs Expressions
+hoistedFunction(); // I am a hoisted function, this is a function declaration, it is hoisted to the top of the scope, so we can call it before its declaration
+function hoistedFunction() {
+  console.log("I am a hoisted function"); 
+}
+
+// notHoistedFunction(); // ReferenceError: Cannot access 'notHoistedFunction' before initialization, this is a function expression, it is not hoisted to the top of the scope
+let notHoistedFunction = function () {
+  console.log("I am not a hoisted function"); 
+};  
