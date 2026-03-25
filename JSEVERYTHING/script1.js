@@ -486,3 +486,110 @@ console.log(reverseArray(numbers3)); // Output: [5, 4, 3, 2, 1]
 let ages = [25, 18, 30, 22];
 ages.sort((a, b) => a - b);
 console.log(ages); // Output: [18, 22, 25, 30]
+
+
+/////////////////////// ********** Objects ********* ///////////////////////////////////
+
+/// Create an object for a student with name , age and isEnrolled
+let student = {
+  name: "Ritika Chaurasiya",
+  age: 27,
+  isEnrolled: true
+}
+console.log(student);
+
+//// Can an object key be a number? Yes, but it will be converted to a string. 
+/// Can an object key be a boolean? Yes, but it will also be converted to a string.
+let obj = {
+  true: "Yes",
+  42: "answer"
+}
+console.log(obj); // {true: "Yes", "42": "answer"}
+console.log(obj[true]); // Output: "Yes"
+console.log(obj[42]); // Output: "answer"
+
+//// Access the value of "first-name" from this object:
+let user = {
+  "first-name": "john"
+}
+console.log(user["first-name"]); // Output: "john"
+
+/// Add a new key "last-name" with value "doe" to the above object
+user["last-name"] = "doe";
+console.log(user); // Output: { "first-name": "john", "last-name": "doe" }
+
+//// Given a dynamic key let key = "age", how will you access user[key]?
+let key = "age";
+const user1 = {
+  age: 26,
+}
+console.log(user1[key]); // Output: 26
+
+/// From the object below, print the latitude
+const locations = {
+  city: "kanpur",
+  cordinates: {
+    lat: 26.4499,
+    long: 80.3319
+  }
+}
+console.log(locations.cordinates.lat); // Output: 26.4499
+
+/// Add a new key "country" with value "India" to the above object
+locations.country = "India";
+console.log(locations); // Output: { city: "kanpur", cordinates: { lat: 26.4499, long: 80.3319 }, country: "India" }
+
+
+//// What will happen if you try to access a non-existing key in an object? It will return undefined.
+console.log(locations?.population); // Output: undefined
+
+//// Destructure the city and lat from the locations object
+const {city, cordinates: {lat}} = locations;
+console.log(city); // Output: "kanpur"
+console.log(lat); // Output: 26.4499
+
+
+/// Destructure the key "first-name" as a variable called firstName
+let{["first-name"]: firstName} = user;
+console.log(firstName); // Output: "john"
+
+/// Use for-in to log all keys in this object
+const course = {
+  title: "JavaScript",
+  duration: "3 months",
+};
+for(let key in course){
+  console.log(key);
+}
+
+//// Use Object.entries() to print all key-value pairs
+Object.entries(course).forEach(([key, value]) => {
+  console.log(`${key}: ${value}`)
+})
+
+/// copy the original array
+const original = {a : 1, b : 2}
+const copyOriginal = {...original}
+console.log(copyOriginal); // Output: {a: 1, b: 2}
+
+
+/// Deep Clone the obj1 safely
+const obj1 = {info : {score : 80}};
+let newObj = JSON.parse(JSON.stringify(obj1));
+newObj.info.score = 90;
+console.log(obj1); // output: {info: {score: 80}}
+console.log(newObj); // Output: {info: {score: 90}}
+
+
+//// Rewrite this safely using optional chainning
+const person = {}
+// console.log(person.profile.name);
+console.log(person?.profile?.name); // Output: undefined
+
+/// Use a variable to dynamic assign a property
+const key1 = "role";
+let obj2 ={
+  name: "evin",
+  [key1]: "admin"
+}
+console.log(obj2); // Output: {name: "evin", role: "admin"}
