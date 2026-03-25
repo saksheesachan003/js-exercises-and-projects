@@ -1,4 +1,4 @@
-//////////////////////// ********** Variables and Declarations  *********
+//////////////////////// ********** Variables and Declarations  ********* //////////////////////////////////////
 
 var a; // declarations
 var a = 12; // initalization
@@ -87,7 +87,7 @@ const person = { name: "Harsh" };
 person.name = "akshat"; // allowed
 // person = {}; // not allowed, bcs in const we can't re assign new value
 
-/////////////////////// ********** Data Types + Type System  *********
+/////////////////////// ********** Data Types + Type System  ********* ////////////////////////////////////////////
 
 // Symbol  -> unique immutable value (value can't change, override)
 
@@ -137,7 +137,7 @@ console.log(`Obj1: ${a2.name} Obj2: ${b2.name}`); // in both name will change
 // Undefinied Vs null
 // "5" + 1 Vs "5" - 1
 
-/////////////////////// ********** Operators  *********
+/////////////////////// ********** Operators  ********* /////////////////////////////////////
 
 let x3 = 10;
 let y3 = 20;
@@ -210,7 +210,53 @@ if (count-- === 5) {
   console.log("Not Matched");
 }
 
-/////////////////////// ********** Control Flow  *********
+//  Score logic:
+// Print "Excellent", "Good", "Average", or "Fail" based on range
+
+function gradeChecker(marks) {
+  if(marks > 90 ) return "Excellent";
+  if(marks > 80 ) return "Good";
+  if(marks > 65 ) return "Average";
+  return "Fail";
+}
+console.log(gradeChecker(85))
+
+
+/////////////////////// ********** Control Flow  ********* ///////////////////////////////////
+
+// Build a calculator
+// Using switch + arithmetic operators ( +, -, *, / )
+
+let operator = "+"
+let operand1 = 10;
+let operand2 = 3;
+switch(operator){
+  case "+":
+    result = operand1 + operand2;
+    break;
+  case "-":
+    result = operand1 - operand2;
+    break;
+  case "*":
+    result = operand1 * operand2;
+    break;
+  case "/":
+    result = operand1 / operand2;
+    break;
+  default:
+    console.log("Invalid Operator")
+}
+console.log("Result:", result);
+
+
+//// Early Return Pattern 
+function getVal(val){
+  if(val < 25) return "D";
+  else if(val < 50) return "C";
+  else if(val < 75) return "B";
+  else return "A"
+}
+console.log(getVal(76)) // A
 
 /*   Write a function getGrade(score) that : 
   . Takes a student marks ( 0 to 100 ) 
@@ -266,4 +312,332 @@ switch (weather) {
     console.log("Wear Warm");
 }
 
-/////////////////////// ********** Loops  *********
+// Login message:
+// Show different messages based on combination
+let isLoggedInValue = true;
+let isAdminValue = false;
+let message;
+
+if (isLoggedInValue && isAdminValue) {
+    message = "Logged In with admin";
+} else if (isLoggedInValue) {
+    message = "Logged In user";
+} else if (isAdminValue) {
+    message = "Admin user";
+} else {
+    message = "Not user";
+}
+console.log(message);
+
+
+// Age checker:
+// Return "Kid", "Teen", "Adult", or "Senior"
+const ageChecker = (age) =>
+  age <= 12 ? "Kid" :
+  age <= 19 ? "Teen" :
+  age <= 59 ? "Adult" :
+  "Senior";
+
+console.log(ageChecker(10)); // Kid
+console.log(ageChecker(16)); // Teen
+console.log(ageChecker(30)); // Adult
+console.log(ageChecker(65)); // Senior
+
+/////////////////////// ********** Loops (Repetation) ********* /////////////////////////////////
+
+//// There are two types of loops... ( repetation are going in both)
+    // 1. 1 1 1 1 1 1 1 1  ( without increment) ( print -> 1 1..)
+    // 2. 1 2 3 4 5 6 7 8  ( with increment) ( orint -> 1 2..)
+
+
+
+/// For loop 
+  // kaha se jana hai -> kaha tak jana hai -> kaise jana hai
+  // for(start; end; change)
+
+  // 1 - 5
+  for(let i = 1;  i <=5; i++){
+    console.log(i)  // 1 2 3 4 5
+  }
+
+  
+/// While loop
+  // kaha se jana hai -> kab rukna hai -> kaise jana hai
+// in 4 should stop
+  let i = 1;
+  while ( i < 5) {
+    console.log(i);  // 1 2 3 4
+    i++;
+  }
+
+
+/// do - while loop ( atleast run one time if condition false )
+let j = 12;
+do{
+  console.log(12); // 12
+  i++;
+}
+while ( j < 2)
+
+
+/// Break ( exits from loop)
+for(let i = 1; i < 5; i++){
+  console.log(i);
+  if(i === 3) break; // 1 2 3
+}
+
+/// continue ( skips current iteration)
+for(let i = 1; i < 5; i++){
+  if(i === 3) continue; 
+  console.log(i); // 1 2 4 ( skips -> 3 )
+}
+
+
+/////////////////////// ********** Functions ********* ///////////////////////////////////
+
+/// parameters -> placeholders, arguments -> actual value
+function add(v1, v2) {
+  // console.log(v1, v2);  // undefined undefined, bcs we didn't pass any value
+  // console.log(v1 + v2); // NaN, bcs we can't add undefined value
+}
+add();
+
+// Default Parameters
+function add(v1 = 0, v2 = 0) {
+  // console.log(v1, v2); // 0 0, bcs we set default value 0 for both parameters
+}
+add(); 
+
+// Rest Parameters Vs Spread Operator 
+function num(...numbers) {
+  console.log(numbers); // [1, 2, 3, 4, 5], bcs rest parameter takes all arguments in an array
+}
+let arr = [1, 2, 3, 4, 5]; 
+num(...arr); // rest parameter takes all arguments in an array, we can also spread the array into individual arguments
+
+// return and early return
+function isEven(num) {
+  if (num % 2 === 0) return true; // early return, if condition is true then return true and exit the function
+  return false; // if condition is false then return false
+}
+console.log(isEven(3)); // false
+console.log(isEven(4)); // true
+
+
+/// First class functions ( functions are treated as first class citizens, we can pass function as an argument, return function from another function, and assign function to a variable)
+function abcd(val){
+  val(); // here we are calling the function passed as an argument
+}
+abcd(function () {
+  console.log("Hello"); // Hello , this is a callback function, we are passing this function as an argument to another function
+})
+
+// High - Order functions ( functions that take another function as an argument or return a function)
+function highOrder(){
+  return function(){
+    console.log("I am a high order function"); // I am a high order function, this is a function returned from another function
+  }
+}
+highOrder()(); // we are calling the high order function and then calling the returned function
+
+/// Pure vs Impure functions
+
+// Pure function -> always returns the same output for the same input, and has no side effects ( doesn't modify any external variable or state)
+function pureFunction(a, b) {
+  return a + b; // this is a pure function, it always returns the same output for the same input, and has no side effects
+}
+
+// Impure function -> may return different output for the same input, and may have side effects ( modifies external variable or state)
+let count1 = 0;
+function impureFunction() {
+  count1++; // this is an impure function, it modifies the external variable count1, and may return different output for the same input
+}
+impureFunction();
+console.log(count1); // 1, if we call impureFunction again then count1 will be 2, this is a side effect of impure function
+
+// Closure -> a function that has access to the outer function's variables and parameters, even after the outer function has returned
+function outer() {
+  let count = 0; // this variable is in the outer function's scope
+  return function inner() {
+    count++; // this inner function has access to the outer function's variable count, even after the outer function has returned
+    console.log(count); // this will print the updated count value every time we call the inner function
+  }
+}
+let closureFunction = outer(); // here we are calling the outer function and storing the returned inner function in a variable
+closureFunction(); // 1, this is the first call to the closure function, it will print 1
+
+// Lexical Scope -> a function that has access to the variables and parameters of its outer function, even after the outer function has returned
+function outer1() {
+  let name = "Harsh"; // this variable is in the outer function's scope
+  function inner1() {
+    console.log(name); // this inner function has access to the outer function's variable name, even after the outer function has returned
+  }
+  return inner1;
+}
+let lexicalScopeFunction = outer1(); // here we are calling the outer function and storing the returned inner function in a variable
+lexicalScopeFunction(); // Harsh, this is the first call to the lexical scope function, it will print Harsh
+
+// IIFE ( Immediately Invoked Function Expression) -> a function that is defined and immediately invoked, it is used to create a new scope and avoid polluting the global scope
+(function () {
+  console.log("I am an IIFE"); // I am an IIFE, this function is defined and immediately invoked
+})(); // we are invoking the function immediately after defining it
+
+// Hoisting : Declarations Vs Expressions
+hoistedFunction(); // I am a hoisted function, this is a function declaration, it is hoisted to the top of the scope, so we can call it before its declaration
+function hoistedFunction() {
+  console.log("I am a hoisted function"); 
+}
+
+// notHoistedFunction(); // ReferenceError: Cannot access 'notHoistedFunction' before initialization, this is a function expression, it is not hoisted to the top of the scope
+let notHoistedFunction = function () {
+  console.log("I am not a hoisted function"); 
+}; 
+
+
+/////////////////////// ********** Arrays ********* ///////////////////////////////////
+
+let arr1 = [1, 2, 3, 4, 5]; // array literal syntax
+let arr2 = new Array(1, 2, 3, 4, 5); // array constructor syntax
+arr1[0]; // 1, array indexing starts from 0
+arr1.length; // 5, length of the array
+arr1[2] = 10; // updating the value at index 2  [1, 2, 10, 4, 5]
+
+// Array Methods
+arr1.push(6); // [1, 2, 10, 4, 5, 6], adds an element at the end of the array
+
+arr1.pop(); // [1, 2, 10, 4, 5], removes the last element of the array
+
+arr1.shift(); // [2, 10, 4, 5], removes the first element of the array
+
+arr1.unshift(0); // [0, 2, 10, 4, 5], adds an element at the beginning of the array
+
+arr1.splice(2, 1); // [0, 2, 4, 5], removes 1 element at index 2
+
+arr1.slice(1, 3); // [2, 4], returns a new array from index 1 to index 3 (not inclusive)
+
+arr1.reverse(); // [5, 4, 10, 2, 0], reverses the array
+
+arr1.sort(); // [0, 2, 4, 5, 10], sorts the array in ascending order
+
+arr1.sort((a, b) => b - a); // [10, 5, 4, 2, 0], sorts the array in descending order
+
+arr1.indexOf(4); // 2, returns the index of the first occurrence of the element 4
+
+arr1.includes(5); // true, checks if the element 5 is present in the array
+
+arr1.join("-"); // "0-2-4-5-10", joins the elements of the array into a string with a separator "-"
+
+arr1.concat([6, 7]); // [0, 2, 4, 5, 10, 6, 7], concatenates the array with another array
+
+// map 
+let arr3 = [1, 2, 3, 4, 5];
+let squaredArr = arr3.map((num) => num * num); // [1, 4, 9, 16, 25], returns a new array with the square of each element
+
+// filter
+let evenArr = arr3.filter((num) => num % 2 === 0); // [2, 4], returns a new array with only the even elements 
+
+// reduce
+let sum = arr3.reduce((acc, num) => acc + num, 0); // 15, returns the sum of all elements in the array, 0 is the initial value of the accumulator
+
+// forEach
+arr3.forEach((num) => console.log(num)); // 1 2 3 4 5, executes a provided function for each array element
+
+// find
+let foundNum = arr3.find((num) => num > 3); // 4, returns the first element that satisfies the condition
+
+// findIndex
+let foundIndex = arr3.findIndex((num) => num > 3); // 3, returns the index of the first element that satisfies the condition
+
+// some
+let hasEven = arr3.some((num) => num % 2 === 0); // true, checks if at least one element satisfies the condition
+
+// every
+let allEven = arr3.every((num) => num % 2 === 0); // false, checks if all elements satisfy the condition
+
+// Destructuring
+let [p2, q2, r2] = arr3; // p2 = 1, q2 = 2, r2 = 3, destructuring assignment to extract values from the array into variables
+// let [a, b, , c] = arr3; // a = 1, b = 2, c = 4, we can skip elements by leaving empty space in destructuring assignment
+
+// Spread Operator
+let arr4 = [6, 7, 8];
+let combinedArr = [...arr3, ...arr4]; // [1, 2, 3, 4, 5, 6, 7, 8], combines two arrays into one using the spread operator
+
+
+/////////////////////// ********** Objects ********* ///////////////////////////////////
+
+let obj1 = {
+  name: "Anvi",
+  age: 21,
+  email: "test@test.com"
+}
+
+/// access object .............
+obj1.name; // "Anvi", dot notation to access object properties
+obj1["age"]; // 21, bracket notation to access object properties
+
+/// update object .................
+obj1.name = "Anvi Sharma"; // updating the value of name property
+obj1["age"] = 22; // updating the value of age property  
+
+/// Nested Objects .................
+let nestedObj = {
+  name: "Anvi",
+  age: 21,
+  address: {
+    city: "Delhi",
+    country: "India",
+  },
+};
+nestedObj.address.city; // "Delhi", accessing nested object properties
+nestedObj.address.country; // "India"
+
+/// Object Destructuring .................
+let { name, age } =obj1;                                               
+// name = "Anvi Sharma", age = 22, destructuring assignment to extract values from the object into variables
+
+// let { name, age, address: { city } } = nestedObj; 
+// name = "Anvi", age = 21, city = "Delhi", we can also destructure nested objects
+
+////////// Looping through Objects .................
+/// for....in Loop .................
+for ( let key in obj1) {
+  console.log(key, obj1[key]); // name Anvi Sharma, age 22, email test@test.com
+}
+
+/// Object.keys() ..................
+Object.keys(obj1); 
+// ["name", "age", "email"], returns an array of the object's own enumerable property names
+
+/// Object.values() ..................
+Object.values(obj1); 
+// ["Anvi Sharma", 22, "test@test.com"], returns an array of the object's own enumerable property values
+
+/// Object.entries() ..................
+Object.entries(obj1); 
+// [["name", "Anvi Sharma"], ["age", 22], ["email", "test@test.com"]], returns an array of the object's own enumerable property [key, value] pairs
+
+////////// Copying Objects .................
+//// Spread Operator -> we can use spread operator to create a shallow copy of an object
+let obj2 = { ...obj1 }; // creates a shallow copy of obj1
+
+//// Object.assign() -> pass an empty object as the first argument and the object to be copied as the second argument
+let obj3 = Object.assign({}, obj1); // creates a shallow copy of obj1
+let obj5 = Object.assign({ price: "Entiny" }, obj1); // creates a new object with price property and copies all properties of obj1 into it
+
+//// JSON.parse() and JSON.stringify() ( for deep copy)
+// creates a deep copy of nestedObj, but it doesn't work for functions and undefined values
+let obj4 = JSON.parse(JSON.stringify(nestedObj));
+
+//// Optional Chaining -> to access nested object properties without worrying about whether the intermediate properties exist or not
+console.log(nestedObj?.address?.city); // "Delhi", optional chaining to access nested object properties safely
+console.log(nestedObj?.contact?.phone); // undefined, optional chaining returns undefined if the intermediate property doesn't exist
+
+
+//// Computed Property Names -> we can use computed property names to create dynamic property names in an object
+let dynamicKey = "email";
+let obj6 = {
+  name: "Alisa",
+  age: 30,
+  [dynamicKey] : "alisa@test.com"
+}
+console.log(obj6); // {name: "Alisa", age: 30, email: "alisa@test.com"}
