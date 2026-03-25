@@ -555,7 +555,7 @@ let hasEven = arr3.some((num) => num % 2 === 0); // true, checks if at least one
 let allEven = arr3.every((num) => num % 2 === 0); // false, checks if all elements satisfy the condition
 
 // Destructuring
-let [a, b, c] = arr3; // a = 1, b = 2, c = 3, destructuring assignment to extract values from the array into variables
+let [p2, q2, r2] = arr3; // p2 = 1, q2 = 2, r2 = 3, destructuring assignment to extract values from the array into variables
 // let [a, b, , c] = arr3; // a = 1, b = 2, c = 4, we can skip elements by leaving empty space in destructuring assignment
 
 // Spread Operator
@@ -563,3 +563,81 @@ let arr4 = [6, 7, 8];
 let combinedArr = [...arr3, ...arr4]; // [1, 2, 3, 4, 5, 6, 7, 8], combines two arrays into one using the spread operator
 
 
+/////////////////////// ********** Objects ********* ///////////////////////////////////
+
+let obj1 = {
+  name: "Anvi",
+  age: 21,
+  email: "test@test.com"
+}
+
+/// access object .............
+obj1.name; // "Anvi", dot notation to access object properties
+obj1["age"]; // 21, bracket notation to access object properties
+
+/// update object .................
+obj1.name = "Anvi Sharma"; // updating the value of name property
+obj1["age"] = 22; // updating the value of age property  
+
+/// Nested Objects .................
+let nestedObj = {
+  name: "Anvi",
+  age: 21,
+  address: {
+    city: "Delhi",
+    country: "India",
+  },
+};
+nestedObj.address.city; // "Delhi", accessing nested object properties
+nestedObj.address.country; // "India"
+
+/// Object Destructuring .................
+let { name, age } =obj1;                                               
+// name = "Anvi Sharma", age = 22, destructuring assignment to extract values from the object into variables
+
+// let { name, age, address: { city } } = nestedObj; 
+// name = "Anvi", age = 21, city = "Delhi", we can also destructure nested objects
+
+////////// Looping through Objects .................
+/// for....in Loop .................
+for ( let key in obj1) {
+  console.log(key, obj1[key]); // name Anvi Sharma, age 22, email test@test.com
+}
+
+/// Object.keys() ..................
+Object.keys(obj1); 
+// ["name", "age", "email"], returns an array of the object's own enumerable property names
+
+/// Object.values() ..................
+Object.values(obj1); 
+// ["Anvi Sharma", 22, "test@test.com"], returns an array of the object's own enumerable property values
+
+/// Object.entries() ..................
+Object.entries(obj1); 
+// [["name", "Anvi Sharma"], ["age", 22], ["email", "test@test.com"]], returns an array of the object's own enumerable property [key, value] pairs
+
+////////// Copying Objects .................
+//// Spread Operator -> we can use spread operator to create a shallow copy of an object
+let obj2 = { ...obj1 }; // creates a shallow copy of obj1
+
+//// Object.assign() -> pass an empty object as the first argument and the object to be copied as the second argument
+let obj3 = Object.assign({}, obj1); // creates a shallow copy of obj1
+let obj5 = Object.assign({ price: "Entiny" }, obj1); // creates a new object with price property and copies all properties of obj1 into it
+
+//// JSON.parse() and JSON.stringify() ( for deep copy)
+// creates a deep copy of nestedObj, but it doesn't work for functions and undefined values
+let obj4 = JSON.parse(JSON.stringify(nestedObj));
+
+//// Optional Chaining -> to access nested object properties without worrying about whether the intermediate properties exist or not
+console.log(nestedObj?.address?.city); // "Delhi", optional chaining to access nested object properties safely
+console.log(nestedObj?.contact?.phone); // undefined, optional chaining returns undefined if the intermediate property doesn't exist
+
+
+//// Computed Property Names -> we can use computed property names to create dynamic property names in an object
+let dynamicKey = "email";
+let obj6 = {
+  name: "Alisa",
+  age: 30,
+  [dynamicKey] : "alisa@test.com"
+}
+console.log(obj6); // {name: "Alisa", age: 30, email: "alisa@test.com"}
