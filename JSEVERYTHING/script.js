@@ -491,4 +491,75 @@ function hoistedFunction() {
 // notHoistedFunction(); // ReferenceError: Cannot access 'notHoistedFunction' before initialization, this is a function expression, it is not hoisted to the top of the scope
 let notHoistedFunction = function () {
   console.log("I am not a hoisted function"); 
-};  
+}; 
+
+
+/////////////////////// ********** Arrays ********* ///////////////////////////////////
+
+let arr1 = [1, 2, 3, 4, 5]; // array literal syntax
+let arr2 = new Array(1, 2, 3, 4, 5); // array constructor syntax
+arr1[0]; // 1, array indexing starts from 0
+arr1.length; // 5, length of the array
+arr1[2] = 10; // updating the value at index 2  [1, 2, 10, 4, 5]
+
+// Array Methods
+arr1.push(6); // [1, 2, 10, 4, 5, 6], adds an element at the end of the array
+
+arr1.pop(); // [1, 2, 10, 4, 5], removes the last element of the array
+
+arr1.shift(); // [2, 10, 4, 5], removes the first element of the array
+
+arr1.unshift(0); // [0, 2, 10, 4, 5], adds an element at the beginning of the array
+
+arr1.splice(2, 1); // [0, 2, 4, 5], removes 1 element at index 2
+
+arr1.slice(1, 3); // [2, 4], returns a new array from index 1 to index 3 (not inclusive)
+
+arr1.reverse(); // [5, 4, 10, 2, 0], reverses the array
+
+arr1.sort(); // [0, 2, 4, 5, 10], sorts the array in ascending order
+
+arr1.sort((a, b) => b - a); // [10, 5, 4, 2, 0], sorts the array in descending order
+
+arr1.indexOf(4); // 2, returns the index of the first occurrence of the element 4
+
+arr1.includes(5); // true, checks if the element 5 is present in the array
+
+arr1.join("-"); // "0-2-4-5-10", joins the elements of the array into a string with a separator "-"
+
+arr1.concat([6, 7]); // [0, 2, 4, 5, 10, 6, 7], concatenates the array with another array
+
+// map 
+let arr3 = [1, 2, 3, 4, 5];
+let squaredArr = arr3.map((num) => num * num); // [1, 4, 9, 16, 25], returns a new array with the square of each element
+
+// filter
+let evenArr = arr3.filter((num) => num % 2 === 0); // [2, 4], returns a new array with only the even elements 
+
+// reduce
+let sum = arr3.reduce((acc, num) => acc + num, 0); // 15, returns the sum of all elements in the array, 0 is the initial value of the accumulator
+
+// forEach
+arr3.forEach((num) => console.log(num)); // 1 2 3 4 5, executes a provided function for each array element
+
+// find
+let foundNum = arr3.find((num) => num > 3); // 4, returns the first element that satisfies the condition
+
+// findIndex
+let foundIndex = arr3.findIndex((num) => num > 3); // 3, returns the index of the first element that satisfies the condition
+
+// some
+let hasEven = arr3.some((num) => num % 2 === 0); // true, checks if at least one element satisfies the condition
+
+// every
+let allEven = arr3.every((num) => num % 2 === 0); // false, checks if all elements satisfy the condition
+
+// Destructuring
+let [a, b, c] = arr3; // a = 1, b = 2, c = 3, destructuring assignment to extract values from the array into variables
+// let [a, b, , c] = arr3; // a = 1, b = 2, c = 4, we can skip elements by leaving empty space in destructuring assignment
+
+// Spread Operator
+let arr4 = [6, 7, 8];
+let combinedArr = [...arr3, ...arr4]; // [1, 2, 3, 4, 5, 6, 7, 8], combines two arrays into one using the spread operator
+
+
