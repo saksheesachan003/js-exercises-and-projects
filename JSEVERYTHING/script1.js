@@ -360,3 +360,129 @@ let toUpperCase = transformer(function(str) {
   return str.toUpperCase();
 });
 console.log(toUpperCase("hello")); // Output: HELLO
+
+
+///////////////////////////  Arrays ********************************  //////////////////////////////////
+
+/// Create an array with 3 fruits and log the second fruit to the console.
+let fruits = ["Apple", "Banana", "Cherry"];
+console.log(fruits[1]); // Output: Banana
+
+/// Add "Mango" at the end and "Pineapple" at the beginning of this array
+fruits.push("Mango"); // Add "Mango" at the end
+fruits.unshift("Pineapple"); // Add "Pineapple" at the beginning
+console.log(fruits);
+
+/// Replace "banana" with "kiwi" in array above
+fruits.splice(2, 1, "Kiwi"); // Replace "Banana" with "Kiwi"
+console.log(fruits);
+
+/// Remove the last item from this array uisng a method
+let numbers1 = [1, 2, 3, 4];
+numbers1.pop(); // This will remove the last item (4) from the array
+console.log(numbers1); // Output: [1, 2, 3]
+
+/// Insert "Red" and "Blue" at index 1 in the array 
+let colors = ["Green", "Yellow"];
+colors.splice(1, 0, "Red", "Blue"); // This will insert "Red" and "Blue" at index 1
+console.log(colors); // Output: ["Green", "Red", "Blue", "Yellow"]
+
+/// Extract only the middle 3 items from this array
+let items = [1, 2, 3, 4, 5, 6];
+console.log(items.slice(2, 5)); // Output: [3, 4, 5]
+
+/// Sort this array alphabetically and then reverse it
+let names = ["Zara", "Alice", "Bob", "Charlie"];
+names.sort().reverse(); // This will sort the array alphabetically and then reverse it
+console.log(names); // Output: ["Zara", "Charlie", "Bob", "Alice"]
+
+/// uSE .MAP() to square each number in the array and return a new array with squared values
+let nums = [1, 2, 3, 4];
+let squareNums = nums.map(n => n * n); // This will create a new array with squared values
+console.log(squareNums); // Output: [1, 4, 9, 16]
+
+/// Use .FILTER() to keep numbers grater than 10 in the array and return a new array with those values
+let mixedNums = [5, 10, 15, 20, 25];
+let filteredNums = mixedNums.filter(n => n > 10); // This will create a new array with numbers greater than 10
+console.log(filteredNums); // Output: [15, 20, 25]
+
+/// Use .REDUCE() to find sum of all numbers in the array
+let Nums = [1, 2, 3, 4];
+let Num = Nums.reduce ((acc, val) => acc + val, 0); // This will calculate the sum of all numbers in the array
+console.log(Num); // Output: 10
+
+/// use .FIND() to get the first number less than 10 in the array
+let values = [12, 5, 8, 20, 3];
+let firstLessThan10 = values.find(n => n < 10); // This will find the first number less than 10 in the array
+console.log(firstLessThan10); // Output: 5
+
+/// Use .some() to check if any student has scored below 35
+let scores = [45, 78, 32, 90, 28];
+let hasFailed = scores.some(score => score < 35); // This will check if any student has scored below 35
+console.log(hasFailed); // Output: true
+
+/// Use .every() to check if all numbers are even
+let evenNums = [2, 4, 6, 8];
+let allEven = evenNums.every(n => n % 2 === 0); // This will check if all numbers are even
+console.log(allEven); // Output: true
+
+/// Destructure this  array to get firstName and lastName
+let fullName = ["Sakshee", "Singh"];
+let [fname, lname] = fullName; // This will destructure the array to get firstName and lastName
+console.log(fname); // Output: Sakshee
+console.log(lname); // Output: Singh
+
+/// Merge these two arrays using spread operator
+let arr1 = [1, 2, 3];
+let arr2 = [4, 5, 6];
+let mergedArr = [...arr1, ...arr2]; // This will merge the two arrays using spread operator
+console.log(mergedArr); // Output: [1, 2, 3, 4, 5, 6]
+
+/// Add "India" to the start of this array using spread operator
+let countries = ["USA", "UK", "Australia"];
+countries = ["India", ...countries]; // This will add "India" to the start of the array using spread operator
+console.log(countries); // Output: ["India", "USA", "UK", "Australia"]
+
+
+/// Q1. Create an array of student names and print each
+let students = ["Alice", "Bob", "Charlie"];
+students.forEach(function(student) {
+  console.log(student);
+})
+
+/// Q2. Filter even numbers from an array
+let numbers2 = [1, 2, 3, 4, 5, 6];
+let evenNumbers = numbers2.filter(n => n % 2 === 0);
+console.log(evenNumbers); // Output: [2, 4, 6]
+
+
+/// Q3. Map prices to include GST (18%)
+let prices = [100, 200, 300];
+let priceWithGST = prices.map ( price => price + ( price * 0.18));
+console.log(priceWithGST); // Output: [118, 236, 354]
+
+/// Q4. Reduce salaries to calculate total payroll
+let salaries = [50000, 60000, 55000];
+let totalPayroll = salaries.reduce((acc, salary) => acc + salary, 0);
+console.log(totalPayroll); // Output: 165000
+
+/// Q5. Find the first student with grade A
+let students1 = [
+  { name: "Alice", grade: "B" },
+  { name: "Bob", grade: "A" },
+  { name: "Charlie", grade: "C" }
+];
+let firstAStudent = students1.find(student => student.grade === "A");
+console.log(firstAStudent); // Output: { name: "Bob", grade: "A" }
+
+/// Q6. Write a function to reverse an array
+function reverseArray(arr) {
+  return arr.reverse();
+}
+let numbers3 = [1, 2, 3, 4, 5];
+console.log(reverseArray(numbers3)); // Output: [5, 4, 3, 2, 1]
+
+/// Q7. Sort array of ages in ascending order
+let ages = [25, 18, 30, 22];
+ages.sort((a, b) => a - b);
+console.log(ages); // Output: [18, 22, 25, 30]
