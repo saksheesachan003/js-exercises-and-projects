@@ -593,3 +593,55 @@ let obj2 ={
   [key1]: "admin"
 }
 console.log(obj2); // Output: {name: "evin", role: "admin"}
+
+
+//// Q1. Create an object for a book (title, author, price)
+const book = {
+  title: "The Great Gatsby",
+  author: "F. Scott Fitzgerald",
+  price: 10.99
+}
+
+//// Q2. Access properties using both dot and bracket
+console.log(book.title); // Output: "The Great Gatsby"
+console.log(book["author"]); // Output: "F. Scott Fitzgerald"
+
+//// Q3. Write a nested object (user with address and location)
+const nestedObject = {
+  user: {
+    name: "John Doe",
+    address: {
+      street: "123 Main St",
+      city: "New York",
+      country: "USA"
+    },
+    location: {
+      lat: 40.7128,
+      lng: -74.0060
+    }
+  }
+}
+
+/// Q4. Destructure name and age from a student object
+const student1 = {
+  name: "Alice",
+  age: 20,
+}
+const {name, age} = student1;
+console.log(name, age); // Output: "Alice", 20
+
+
+//// Q5. Loop through keys and values of an object
+for (let key in student1){
+  console.log(`${key}: ${student1[key]}`);
+}
+
+//// Q6. Convert object to array using Object.entries()
+const obj7 = {
+  a: 1,
+  b: 2,
+  c: 3
+}
+const arr = Object.entries(obj7);
+console.log(arr); // Output: [["a", 1], ["b", 2], ["c", 3]]
+
